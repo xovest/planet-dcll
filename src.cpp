@@ -49,3 +49,22 @@ void insertAfter(Node*& head, int val, int afterVal) {
   newNode->next = next;
   next->prev = newNode;
 }
+
+void display(Node* head) {
+  Node* temp = head;
+
+  cout << "Forward: ";
+  while (temp->next != head) {
+    cout << temp->data << " ";
+    temp = temp->next;
+  }
+  cout << temp->data << "\n";
+
+  Node *tail = head->prev;
+  cout << "Reverse: ";
+  while (temp->prev != tail) {
+    cout << temp->data << " ";
+    temp = temp->prev;
+  }
+  cout << temp->data << "\n";
+}

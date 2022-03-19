@@ -105,3 +105,39 @@ void deletePlanet(Planet*& head, string val) {
     free(curr);
   }
 }
+
+int countList(Planet* head) {
+  Planet* temp = head;
+
+  int cnt = 0;
+  while (temp->next != head) {
+    temp = temp->next;
+    ++cnt;
+  }
+  ++cnt;
+
+  return cnt;
+}
+
+bool insertAtLocation(Planet* head, string val, int pos) {
+  Planet* temp = head;
+  Planet* newNode = new Planet;
+  int cnt = countList(head);
+
+  // if (pos == 0) { idk
+  //   insertBegin(head->next, val);
+  //   return true;
+  // }
+
+  if (temp == NULL || cnt < pos) return false;
+  else {
+    newNode->name = val;
+    for (int i = 0; i < pos - 1; ++i) temp = temp->next;
+
+    newNode->next = temp->next;
+    temp->next = temp->next->prev = newNode;
+    newNode->prev = temp;
+    return true;
+  }
+  return false;
+}

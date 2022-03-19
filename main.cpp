@@ -4,10 +4,13 @@ using namespace std;
 
 int main() {
   Planet *p = 0;
-  string s;
-  cout << "s = ";
-  cin >> s;
-  insertEnd(p, s);
+  insertEnd(p, "one");
+  insertEnd(p, "two");
+  insertEnd(p, "three");
+  insertEnd(p, "four");
+  insertEnd(p, "five");
+  insertEnd(p, "six");
+  insertAtLocation(p, "intruder", 0);
   display(p);
   return 0;
 }

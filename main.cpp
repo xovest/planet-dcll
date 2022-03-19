@@ -3,12 +3,10 @@
 using namespace std;
 
 int main() {
-  Node* head = NULL;
-  insertEnd(head, 2);
-  insertBegin(head, 1);
-  insertEnd(head, 4);
-  insertEnd(head, 9);
-  insertAfter(head, 7, 4);
-  display(head);
+  Node* planets = NULL;
+  char command[30];
+  cout << "Enter: ";
+  cin.get(command, 100);
+  cout << command;
   return 0;
 }

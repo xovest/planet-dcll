@@ -1,12 +1,13 @@
-#include <iostream>
+#include <bits/stdc++.h>
 #include "header.h"
 using namespace std;
 
 int main() {
-  Node* planets = NULL;
-  char command[30];
-  cout << "Enter: ";
-  cin.get(command, 100);
-  cout << command;
+  Planet *p = 0;
+  string s;
+  cout << "s = ";
+  cin >> s;
+  insertEnd(p, s);
+  display(p);
   return 0;
 }

@@ -2,79 +2,77 @@
 #include "header.h"
 using namespace std;
 
-void insertEnd(Node*& head, int val) {
+void insertEnd(Planet*& head, string val) {
   if (head == NULL) {
-    Node* newNode = new Node;
-    newNode->data = val;
-    newNode->next = newNode->prev = newNode;
+    Planet* newPlanet = new Planet;
+    newPlanet->name = val;
+    newPlanet->next = newPlanet->prev = newPlanet;
 
-    head = newNode;
+    head = newPlanet;
   } else {
-    Node* tail = head->prev;
+    Planet* tail = head->prev;
 
-    Node* newNode = new Node;
-    newNode->data = val;
+    Planet* newPlanet = new Planet;
+    newPlanet->name = val;
 
-    newNode->next = head;
-    head->prev = newNode;
-    newNode->prev = tail;
-    tail->next = newNode;
+    newPlanet->next = head;
+    head->prev = newPlanet;
+    newPlanet->prev = tail;
+    tail->next = newPlanet;
   }
 }
 
-void insertBegin(Node*& head, int val) {
-  Node* tail = head->prev;
+void insertBegin(Planet*& head, string val) {
+  Planet* tail = head->prev;
 
-  Node* newNode = new Node;
-  newNode->data = val;
+  Planet* newPlanet = new Planet;
+  newPlanet->name = val;
 
-  newNode->next = head;
-  newNode->prev = tail;
+  newPlanet->next = head;
+  newPlanet->prev = tail;
 
-  tail->next = head->prev = newNode;
+  tail->next = head->prev = newPlanet;
 
-  head = newNode;
+  head = newPlanet;
 }
 
-void insertAfter(Node*& head, int val, int afterVal) {
-  Node* newNode = new Node;
-  newNode->data = val;
+void insertAfter(Planet*& head, string val, string afterVal) {
+  Planet* newPlanet = new Planet;
+  newPlanet->name = val;
 
-  Node* temp = head;
-  while (temp->data != afterVal) temp = temp->next;
-  Node* next = temp->next;
+  Planet* temp = head;
+  while (temp->name != afterVal) temp = temp->next;
+  Planet* next = temp->next;
 
-  temp->next = newNode;
-  newNode->prev = temp;
-  newNode->next = next;
-  next->prev = newNode;
+  temp->next = newPlanet;
+  newPlanet->prev = temp;
+  newPlanet->next = next;
+  next->prev = newPlanet;
 }
 
-void display(Node* head) {
-  Node* temp = head;
+void display(Planet* head) {
+  Planet* temp = head;
 
-  cout << "Forward: ";
   while (temp->next != head) {
-    cout << temp->data << " ";
+    cout << temp->name << " ";
     temp = temp->next;
   }
-  cout << temp->data << "\n";
+  cout << temp->name << "\n";
 
-  // Node *tail = head->prev;
-  // cout << "Reverse: ";
+  // Planet *tail = head->prev;
   // while (temp->prev != tail) {
-  //   cout << temp->data << " ";
+  //   cout << temp->name << " ";
   //   temp = temp->prev;
   // }
-  // cout << temp->data << "\n";
+  // cout << temp->name << "\n";
 }
 
-void deleteNode(Node*& head, int val) {
+void deletePlanet(Planet*& head, string val) {
   if (head == NULL) return;
 
-  Node* curr = head;
-  Node* prev = NULL;
-  while (curr->data != val) {
+  Planet* curr = head;
+  Planet* prev = NULL;
+  while (curr->name != val) {
     if (curr->next == head) {
       cout << "List has no " << val << " in it";
       return;
@@ -101,7 +99,7 @@ void deleteNode(Node*& head, int val) {
     head->prev = prev;
     free(curr);
   } else {
-    Node* temp = curr->next;
+    Planet* temp = curr->next;
     prev->next = temp;
     temp->prev = prev;
     free(curr);
